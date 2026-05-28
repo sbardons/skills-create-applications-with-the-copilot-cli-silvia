@@ -5,6 +5,9 @@ const {
   subtraction,
   multiplication,
   division,
+  modulo,
+  power,
+  squareRoot,
   calculate,
 } = require('../calculator');
 
@@ -53,12 +56,59 @@ describe('calculator operations', () => {
     });
   });
 
+  describe('modulo', () => {
+    test('matches the extended-operations image example for 5 % 2', () => {
+      expect(modulo(5, 2)).toBe(1);
+    });
+
+    test('returns the remainder of a division', () => {
+      expect(modulo(10, 3)).toBe(1);
+    });
+
+    test('throws for modulo by zero', () => {
+      expect(() => modulo(10, 0)).toThrow('Modulo by zero is not allowed.');
+    });
+  });
+
+  describe('power', () => {
+    test('matches the extended-operations image example for 2 ^ 3', () => {
+      expect(power(2, 3)).toBe(8);
+    });
+
+    test('raises the base to the exponent', () => {
+      expect(power(2, 3)).toBe(8);
+    });
+  });
+
+  describe('squareRoot', () => {
+    test('matches the extended-operations image example for square root of 16', () => {
+      expect(squareRoot(16)).toBe(4);
+    });
+
+    test('returns the square root of a number', () => {
+      expect(squareRoot(9)).toBe(3);
+    });
+
+    test('returns zero for zero', () => {
+      expect(squareRoot(0)).toBe(0);
+    });
+
+    test('throws for negative numbers', () => {
+      expect(() => squareRoot(-9)).toThrow(
+        'Square root of a negative number is not allowed.'
+      );
+    });
+  });
+
   describe('calculate', () => {
     test('supports symbol operations', () => {
       expect(calculate(8, '+', 4)).toBe(12);
       expect(calculate(8, '-', 4)).toBe(4);
       expect(calculate(8, '*', 4)).toBe(32);
       expect(calculate(8, '/', 4)).toBe(2);
+      expect(calculate(8, '%', 3)).toBe(2);
+      expect(calculate(5, '%', 2)).toBe(1);
+      expect(calculate(2, '^', 3)).toBe(8);
     });
 
     test('supports named operations', () => {
@@ -66,10 +116,13 @@ describe('calculator operations', () => {
       expect(calculate(8, 'subtraction', 4)).toBe(4);
       expect(calculate(8, 'multiplication', 4)).toBe(32);
       expect(calculate(8, 'division', 4)).toBe(2);
+      expect(calculate(10, 'modulo', 3)).toBe(1);
+      expect(calculate(2, 'power', 3)).toBe(8);
+      expect(calculate(9, 'sqrt')).toBe(3);
     });
 
     test('throws for unsupported operations', () => {
-      expect(() => calculate(8, '%', 4)).toThrow('Unsupported operation');
+      expect(() => calculate(8, 'invalid', 4)).toThrow('Unsupported operation');
     });
   });
 });
