@@ -1,0 +1,23 @@
+{
+  "name": "skills-create-applications-with-the-copilot-cli-silvia",
+  "version": "1.0.0",
+  "description": "<img src=\"https://octodex.github.com/images/Professortocat_v2.png\" align=\"right\" height=\"200px\" />",
+  "main": "src/calculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbardons/skills-create-applications-with-the-copilot-cli-silvia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbardons/skills-create-applications-with-the-copilot-cli-silvia/issues"
+  },
+  "homepage": "https://github.com/sbardons/skills-create-applications-with-the-copilot-cli-silvia#readme",
+  "devDependencies": {
+    "jest": "^30.4.2"
+  }
+}
